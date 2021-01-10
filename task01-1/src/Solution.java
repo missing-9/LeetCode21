@@ -1,14 +1,24 @@
-
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode result = null;
+        ListNode root = new ListNode(0);
+        ListNode result = root;
         int num = 0;
-        while (l1 != null || l2 != null) {
-            if (l1 == null){
-                l1=new ListNode(0,null);
+        while (l1 != null || l2 != null||num!=0) {
+            if (l1 == null) {
+                l1 = new ListNode(0, null);
             }
-            if (l2==null){
-                l2=new ListNode(0,null);
+            if (l2 == null) {
+                l2 = new ListNode(0, null);
             }
             ListNode element = new ListNode();
             int sum = l1.val + l2.val;
@@ -22,13 +32,11 @@ class Solution {
                 num = 0;
                 element.val = sum;
             }
-            if (result!=null){
-                result.next = element;
-            }
-            result = element;
+            result.next = element;
+            result=element;
             l1 = l1.next;
             l2 = l2.next;
         }
-        return result;
+        return root.next;
     }
 }
